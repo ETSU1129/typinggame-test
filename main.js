@@ -10,16 +10,16 @@ const stats = new Stats();
 stats.showPanel(0);
 document.body.appendChild(stats.dom);
 
-// シーン設定
+// scene
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-// カメラ設定
+//camera
 const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
 camera.position.set(0, 5, 10);
 scene.add(camera);
 
-// レンダラー設定
+// renderer
 const renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector('canvas.webgl'),
     antialias: true
@@ -27,11 +27,11 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// OrbitControls設定
+// OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
-// 光源
+// lights
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
 scene.add(ambientLight);
 
@@ -80,7 +80,7 @@ document.body.appendChild(wordDisplay);
 let currentWord = '';
 let currentLetterIndex = 0; // 現在の文字インデックス
 
-// 3Dテキスト生成関数（フォントのロードを待ってからメッシュと物理ボディを生成）
+// 3Dテキスト生成関数（フォントのロードを待ってからメッシュと物理ボディを生成）非同期にするためasyncにしなければならないらしい
 async function createTextMesh(letter, index) {
     if (!font) { // フォントがまだロードされていない場合は待つ
         await new Promise(resolve => {
@@ -137,6 +137,7 @@ function updateWordDisplay() {
 async function checkLetter(input) {
     const expectedLetter = currentWord[currentLetterIndex];
     if (input === expectedLetter) {
+
         // 正しい文字が入力された場合、その文字を表示し、物理エンジンで落下
         await createTextMesh(expectedLetter, currentLetterIndex);
         currentLetterIndex++;
