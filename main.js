@@ -54,47 +54,37 @@ camera.rotation.set(0.131, 0.56, -0.07);
 scene.add(camera);
 
 
-// function introAnimation() {
-//     controls.enabled = false // カメラをアニメーションするためにオービットコントロールを無効にする
+function introAnimation() {
 
-//     document.getElementById('selected--chair--component-show').style.display = 'none'
-//     gsap.to('#text', { opacity: 0, duration: 1 });
+    document.getElementById('start').style.display = 'none'
 
-//     gsap.to(camera.position, { // カメラの位置から
-//         duration: 4, // アニメーションにかかる時間A
-//         x:20, // 目指すx位置
-//         y: 10, // 目指すy位置q
-//         z: 31, // 目指すz位置
-//         ease: "power4.inOut", // イージングを定義
-//         onComplete: function () { // アニメーション終了時
-                                    
-//                                     document.getElementById('text').style.display = 'none';
-//                                     document.getElementById('chart').style.opacity = 0;
-//                                     document.getElementById('chart').style.display = 'flex';
-//                                     gsap.to('#chart', { opacity: 1, duration: 0.2 });
-                                    
-//                                     // setOrbitControlsLimits() // コントロール制限を設定
-//                                     arrow.style.display = 'block'
-//                                     addMouseMoveEventListener()
-                                    
-//         }
-//     })
-//     gsap.to(controls.target,
-//         {
-//             duration: 3.5,
-//             delay: 0.5,
-//             x: 8,
-//             y: 5,
-//             z: -1,
-//             ease: "power4.inOut"
-//         }
-//     )
+    gsap.to(camera.position, 
+        { // カメラの位置から
+        duration: 1.5, // アニメーションにかかる時間A
+        x:4.84, // 目指すx位置
+        y: 1.64, // 目指すy位置q
+        z: 6.06, // 目指すz位置
+        ease: "power4.inOut", // イージングを定義
+        onComplete: function () { // アニメーション終了時
+        }
+    }
+    )
+    gsap.to(camera.rotation,
+        {
+            duration: 3.5,
+            delay: 0.5,
+            x: -0.17,
+            y: 0.36,
+            z: -0.1,
+            ease: "power4.inOut"
+        }
+    )
     
-// }
+}
 
-// document.getElementById('start').addEventListener('click', () => {
-//     introAnimation()
-// })
+document.getElementById('start').addEventListener('click', () => {
+    introAnimation()
+})
 
 
 
