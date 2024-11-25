@@ -155,7 +155,7 @@ function preloadFont() {
             // すでにキャッシュされている場合はそれを返す
             resolve(cachedFont);
         } else {
-            fontLoader.load('./public/Oswald Medium_Regular.json', (loadedFont) => {
+            fontLoader.load('./Oswald Medium_Regular.json', (loadedFont) => {
                 cachedFont = loadedFont;
                 resolve(cachedFont);
             });
